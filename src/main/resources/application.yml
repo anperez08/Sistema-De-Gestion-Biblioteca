@@ -1,0 +1,38 @@
+server:
+  port: ${PORT:5000}
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:50MB}
+      max-request-size: ${MAX_REQUEST_SIZE:50MB}
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+   url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/sgb}
+   password: ${DATASOURCE_PASSWORD}
+   username: ${DATASOURCE_USER}
+  hikari:
+      idle-timeout: ${IDLE_TIMEOUT:30000}
+      max-lifetime: ${MAX_LIFETIME:1800000}
+      maximum-pool-size: ${POOL_SIZE:2}
+logging:
+  logback:
+    rollingpolicy:
+      max-history: 7
+      max-file-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+vaadin:
+  launch-browser: true
+tempArp:
+  password: ${TEMP_PASSWORD}
